@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="js/vue.js" type="text/javascript" charset="UTF-8"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			.page{
+				width: 100vw;
+				height: 100vh;
+				background-color: #efefef;
+				position: fixed;
+				left: 0;
+				top: 0;
+			}
+			.rMenu{
+				width: 50vw;
+				height:100vh;
+				position:fixed;
+				left:0;
+				top:0;
+				transform: translateX(100vw);
+				background-color: skyblue;
+				transition: transform 0.5s ;
+			}
+			/* .active{
+				transform: translateX(50vw);
+			} */
+		</style>
+		
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div class="page">
+				首页
+				<button type="button" @click="toggleMenu()">切换侧边栏</button>
+			</div>
+			<div class="rMenu" :style="{transform:'translatex('+menuwidth+'vw)'}">
+				侧边栏
+			</div>
+		</div>
+		
+	<script>
+		var app=new Vue({
+			el:"#app",
+			data:{
+				// isShow:false	
+				menuwidth:100
+			},
+			methods:{
+				toggleMenu:function(){
+					if(this.menuwidth==100){
+						this.menuwidth=70
+					}else{
+						this.menuwidth=100
+					}
+				}
+			}
+		})
+	</script>
+	<script src="js/vue.js" type="text/javascripts" charset="UTF-8"></script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="UTF-8"></script>
+	<style type="text/css">
+		#login{
+			background-color: aqua;
+		}
+		#register{
+			background-color: black;
+		}
+	</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{msg}}</h1>
+			<!-- 一次性插入不在修改 -->
+			<h1 v-once>{{msg}}</h1>
+			<!-- 插入html内xss攻击-->
+			<h1 v-html="htmmlTxt"></h1>
+			<!--v-bind 修改属性内容 -->
+			<div :id="idname">
+				<h1>登录</h1>
+			</div>
+			<!-- 表达式应用 -->
+			<div>
+				{{firstname+lastname}}
+			</div>
+			<!-- 三元运算符 -->
+			<div>
+				{{isvip?"欢迎":"请充值"}}
+			</div>
+		<!-- 事件的绑定 -->
+		<button v-on:click="change">改变背景</button>
+		</div>
+	<script>
+		var app=new Vue({
+			el:"#app",
+			data:{
+				msg:"hello Vue",
+				htmmlTxt:'<span>hello</span>',
+				idname:"login",
+				firstname:"张",
+				lastname:"三",
+				isvip:true
+			},
+			methods:{
+				change:function(){
+					// document.body.style.background="skyblue"不建议使用
+				}
+			}
+		})
+	</script>
+	</body>
+</html>

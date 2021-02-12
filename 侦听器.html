@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="app">
+			
+			<ul>
+				<li v-for="item in arr">
+					<h3>{{item}}</h3>
+				</li>
+			</ul>
+			<h1>{{msg}}</h1>
+			<h1>{{reverseMsg}}</h1>
+		</div>
+		<script>
+			let app=new Vue({
+				el:"#app",
+				data:{
+					msg:"hello Vue",
+					arr:['小明','小红','小黑']
+				},
+				// 监听事件尽量不使用太多，少用watch
+				watch:{
+					msg:function(val){
+						console.log("监听事件")
+						console.log(val)
+					},
+					arr:function(val){
+						console.log("监听")
+						this.msg='在监听事件'
+						console.log(val)
+					}
+				},
+				// 计算属性
+				computed:{
+					reverseMsg:{
+						get:function(){ 
+							return this.msg.split("").reverse().join("")
+							},
+						set:function(value){
+							console.log(value)
+							this.msg=value.split("").reverse().join("")	
+					},
+					}
+				},
+				// 事件
+				methods:{}
+			})
+		</script>
+	</body>
+</html>
